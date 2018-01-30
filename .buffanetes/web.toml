@@ -10,15 +10,15 @@ sidecars = [google-cloud-sql-proxy]
 # - the variable name in meta.toml
 # - a secret
 #
-# NOTE: the webserver will also get some env vars injected from the database.toml
+# NOTE: the webserver will also get some environment vars injected from the database.toml
 
 # this is an environment variable passed through from the deployer to the webserver
-[[envs]]
+[[env]]
 from = env-var
 name = "ENV"
 
 # this is an environment variable from a secret
-[[envs]]
+[[env]]
 from = secret
 name = "AUTH0_PUBLIC_SIGNING_CERT_BASE64"
 secret-name = "auth0-public-signing-cert-base64"
