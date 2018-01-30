@@ -1,7 +1,27 @@
-# this section tells Buffanetes what host the web server should serve
-host = buffanetes.io
+# this is what host the server should serve on
+host-env = host
+# this is the name of the database to use. see database.toml
 database = standard
+# this is what sidecars to use. see sidecars.toml
 sidecars = [google-cloud-sql-proxy]
+# this is what environment variables to pass into the webserver. it's a map from the
+# environment variable name that the webserver will get to any one of these values:
+#
+# - the variable name in meta.toml
+# - a secret
+#
+# NOTE: the webserver will also get some env vars injected from the database.toml
+
+# this is an environment variable passed through from the deployer to the webserver
+[[envs]]
+from = env-var
+name = "ENV"
+
+# this is an environment variable from a secret
+[[envs]]
+from = secret
+name = "AUTH0_PUBLIC_SIGNING_CERT_BASE64"
+secret-name = "auth0-public-signing-cert-base64"
 
 # this section tells Buffanetes how to check if the Buffalo server is alive. It's optional,
 # and the default is no probes

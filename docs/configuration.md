@@ -8,17 +8,17 @@ go under the `.buffanetes` directory.
 # Buffanetes Metadata
 
 The first configuration file that Buffanetes looks for is `meta.toml`. Buffanetes almost
-always looks for this file before it does anything else. It tells Buffanetes what your
-app is called and how to build and push Docker images.
+always looks for this file before it does anything else. It tells Buffanetes what the config
+version is, what your app is called, and the environment variables that are required to 
+deploy
 
 Here's an example:
 
 ```toml
-# this tells buffanetes your app's name. it's used all over the place
 name = myapp
-# this tells buffanetes the environment that your app can be deployed in. environments are used
-environments = [development, staging, production]
 version = 1
+[env]
+docker-repo = "DOCKER_REPO"
 ```
 
 # Buffanetes Web Configuration

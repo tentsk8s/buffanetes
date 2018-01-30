@@ -1,6 +1,3 @@
-# this tells buffanetes the name of your app. it's used all over the place, and you can
-# add suffixes to the app from the command line (i.e. to deploy a pull request in staging)
-name = myapp
 # this tells buffanetes the version of all the configs in the .buffanetes directory.
 # it's to make sure you're using the right CLI to match the configs
 version = 1
@@ -13,8 +10,8 @@ version = 1
 #
 # All environment variables will be prefixed with "BUFFANETES_"
 [env]
-# don't remove these 3 env vars. they're used for a lot of things
-org-name = "ORG_NAME"
-app-name = "APP_NAME"
+# don't remove this env var. it's used for a lot of things
 docker-repo = "DOCKER_REPO"
 google-cloud-sql-instances = "GOOGLE_CLOUD_SQL_INSTANCES"
+env = "ENV"
+host = "HOST"
