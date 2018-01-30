@@ -1,0 +1,4 @@
+# this file holds configuration for how to run grifts
+
+database = standard
+sidecars = [google-cloud-sql-proxy]

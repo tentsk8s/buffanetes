@@ -1,0 +1,14 @@
+# this file holds configuration for databases
+
+# the standard database
+[standard]
+# this gets sent to the app as an env var DB_HOST
+host = 127.0.0.1
+# this gets sent to the app as an env var DB_PORT
+port = 3306
+# this gets sent to the app as an env var DB_USER
+username = buffuser
+# this is populated by a secret that needs to already be in the cluster
+#
+# this gets sent to the app as an env var DB_PASS
+password-secret = web-db-password

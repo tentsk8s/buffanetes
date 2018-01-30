@@ -1,0 +1,4 @@
+# this config holds configuration for how to run database migrations
+
+database = standard
+sidecars = [google-cloud-sql-proxy]

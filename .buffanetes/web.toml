@@ -1,0 +1,12 @@
+# this section tells Buffanetes what host the web server should serve
+host = buffanetes.io
+database = standard
+sidecars = [google-cloud-sql-proxy]
+
+# this section tells Buffanetes how to check if the Buffalo server is alive. It's optional,
+# and the default is no probes
+[health]
+# this tells Buffanetes if the server is still alive
+alive = "/alive"
+# this tells Buffanetes when the server is done starting up
+ready = "/ready"

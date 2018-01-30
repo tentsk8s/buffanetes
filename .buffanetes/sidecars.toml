@@ -1,0 +1,14 @@
+# this file holds configuration for sidecars. sidecars are processes that run alongside your 
+# web server. they can do things like log forwarding, stats aggregation, etc... 
+# Sidecars are built in to Buffanetes. You can't specify a custom one
+
+# This is the Google Cloud SQL proxy (https://cloud.google.com/sql/docs/mysql/sql-proxy)
+# All you do is specify the Google Cloud SQL Instance that the proxy should forward to and 
+# the secret where the credentials should live.
+#
+# It's currently the only supported sidecar
+[google-cloud-sql-proxy]
+# this is populated with an environment variable
+instances-env = google-cloud-sql-instances
+# this is populated by a secret that needs to already be in the cluster
+creds-secret = cloudsql-instance-credentials
