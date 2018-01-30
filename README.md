@@ -20,17 +20,24 @@ Buffanetes doesn't change your development workflow. You still use the `buffalo`
 do all your local development. You'll use the Buffanetes CLI (called `buffnet`) when you're ready 
 to deploy your application to your Kubernetes cluster.
 
-Let's look at a simple workflow.
+Let's look at a simple workflow, starting with no Buffalo app.
 
-When you first run `buffalo new myapp`, you'll get your brand new app. Thanks Buffalo!
+```console
+# first, create a new Buffalo app
+buffalo new myapp
+# let's go into the new app
+cd myapp
+# now set up the Buffanetes config files
+buffnet init
+# let's build some stuff into our web app. rinse and repeat
+buffalo dev
+# now we're ready to deploy our app to Kubernetes
+buffnet deploy web
+```
 
-You simply `cd` into the `myapp` directory and run `buffnet init` to set up your app for
-Kubernetes.
+Now you're cooking! You created a Buffalo app, built it, and deployed it to Kubernetes.
 
-Then, after you build some stuff into your app, you're ready to deploy it. You'll run
-`buffnet deploy web` for that.
-
-Now you're cooking! Your webapp is built, deployed, and ready to go. Enjoy!
+Enjoy!
 
 # Documentation
 
