@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	cmd := buildRootCmd()
+	cmd := rootCmd()
 	if err := cmd.Execute(); err != nil {
 		os.Exit(1)
 	}

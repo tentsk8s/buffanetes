@@ -4,7 +4,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func buildRootCmd() *cobra.Command {
+func rootCmd() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "buffnet",
@@ -12,6 +12,7 @@ func buildRootCmd() *cobra.Command {
 	}
 
 	cmd.AddCommand(envCmd())
+	cmd.AddCommand(deployRootCmd())
 
 	return cmd
 }
