@@ -18,3 +18,14 @@ func ParseMeta(b []byte) (*Meta, error) {
 	}
 	return ret, nil
 }
+
+// EnvExists returns true if the environment variable exists in m, false otherwise
+func (m *Meta) EnvExists(name string) bool {
+	_, ok := m.Env[name]
+	return ok
+}
+
+// EnvName returns the NAME of an environment variable
+func (m *Meta) EnvName(name string) string {
+	return m.Env[name]
+}

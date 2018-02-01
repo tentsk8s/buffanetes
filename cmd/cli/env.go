@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 
 	"github.com/fatih/color"
@@ -15,13 +14,9 @@ func envCmd() *cobra.Command {
 		Use:   "env",
 		Short: "Get buffanetes environment variables",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			metaBytes, err := ioutil.ReadFile(".buffanetes/meta.toml")
-			if err != nil {
+			meta := new(config.Meta)
+			if err := config.ParseFile("meta.toml", meta); err != nil {
 				return err
-			}
-			meta, err := config.ParseMeta(metaBytes)
-			if err != nil {
-				return nil
 			}
 			color.Green("Environment Variables")
 			table := tablewriter.NewWriter(os.Stdout)

@@ -8,7 +8,7 @@ host = 127.0.0.1
 port = 3306
 # this gets sent to the app as an env var DB_USER
 username = buffuser
-# this is populated by a secret that needs to already be in the cluster
+# this is the name of a secret that needs to already be in the cluster
 #
-# this gets sent to the app as an env var DB_PASS
+# the value of the secret is sent to the app as the env var DB_PASS
 password-secret = web-db-password
