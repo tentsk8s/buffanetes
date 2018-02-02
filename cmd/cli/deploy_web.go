@@ -4,8 +4,10 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/tentsk8s/buffanetes/pkg/config"
+	"github.com/tentsk8s/buffanetes/pkg/web"
 )
 
 func deployWebCmd() *cobra.Command {
@@ -17,15 +19,15 @@ func deployWebCmd() *cobra.Command {
 			if len(args) < 1 {
 				return errors.New("you forgot to add an org/app")
 			}
-			orgAndApp := strings.Split(args[0], "/")
-			if len(orgAndApp) != 2 {
-				return errors.New("the org and app should be org/app")
+			orgAndApp, err := config.ParseOrgAndApp(args[0])
+			if err != nil {
+				return err
 			}
 			cfg := new(config.Web)
 			if err := config.ParseFile("web.toml", cfg); err != nil {
 				return err
 			}
-			chart := web.BuildHelmChart(web, orgAndApp)
+			chart := web.BuildHelmChart(cfg, orgAndApp)
 			color.Green(chart)
 			return nil
 		},

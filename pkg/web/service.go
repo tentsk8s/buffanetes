@@ -2,9 +2,11 @@ package web
 
 import (
 	"fmt"
+
+	"github.com/tentsk8s/buffanetes/pkg/config"
 )
 
-func ServiceYAML(org, app string) string {
+func ServiceYAML(orgAndApp *config.OrgAndApp) string {
 	return fmt.Sprintf(`apiVersion: v1
 kind: Service
 metadata:
@@ -17,5 +19,5 @@ spec:
 	  targetPort: 8080
 	selector:
 		app: %s
-`, baseName(org, app), baseName(org, app))
+`, orgAndApp.WithSuffix(""), orgAndApp.WithSuffix(""))
 }
