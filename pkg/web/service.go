@@ -19,5 +19,5 @@ spec:
 	  targetPort: 8080
 	selector:
 		app: %s
-`, orgAndApp.WithSuffix(""), orgAndApp.WithSuffix(""))
+`, orgAndApp.WithHyphens(""), orgAndApp.WithHyphens())
 }
