@@ -1,37 +1,28 @@
 package helm
 
 import (
-	"fmt"
-
 	"github.com/tentsk8s/buffanetes/pkg/config"
+	"k8s.io/helm/pkg/proto/hapi/chart"
 )
 
-// Chart represents an entire helm chart
-type Chart struct {
-	ChartYAML string
-	Readme    string
-	Values    Values
-	Templates []*Template
-}
-
-// NewChart creates a new *Chart from the given parameters
-func NewChart(chartYAML, readme string, values Values, templates []*Template) *Chart {
-	return &Chart{
-		ChartYAML: chartYAML,
-		Readme:    readme,
-		Values:    values,
-		Templates: templates,
+func chartMetadata(orgAndApp config.OrgAndApp) *chart.Metadata {
+	return &chart.Metadata{
+		Name:        orgAndApp.String(),
+		Version:     "v0.0.1",
+		Description: orgAndApp.String(),
+		Maintainers: []*chart.Maintainer{
+			{
+				Name:  "buffanetes",
+				Email: "info@buffanetes.io",
+				Url:   "https://github.com/tentsk8s/buffanetes",
+			},
+		},
 	}
 }
 
-// ChartYAML outputs the chart YAML for the given org and app
-func ChartYAML(orgAndApp *config.OrgAndApp) string {
-	// TODO: home, version, description, maintainers
-	return fmt.Sprintf(`name: %s
-home: http://%s.%s
-version: 0.0.1
-description: %s
-maintainers:
-- Buffanetes
-`, orgAndApp.String(), orgAndApp.Org, orgAndApp.App, orgAndApp.String())
+// NewChart creates a new *Chart from the given parameters
+func NewChart(orgAndApp config.OrgAndApp) *chart.Chart {
+	return &chart.Chart{
+		Metadata: chartMetadata(orgAndApp),
+	}
 }
