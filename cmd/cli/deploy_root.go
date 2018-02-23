@@ -9,5 +9,6 @@ func deployRootCmd() *cobra.Command {
 		Use:   "deploy",
 		Short: "Deploy something in your Buffalo app to Kubernetes",
 	}
+	cmd.AddCommand(deployGriftCommand)
 	return cmd
 }
