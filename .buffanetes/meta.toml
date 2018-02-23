@@ -1,17 +1,10 @@
-# this tells buffanetes the version of all the configs in the .buffanetes directory.
+# this tells buffanetes the version of the configs in the .buffanetes directory.
 # it's to make sure you're using the right CLI to match the configs
 version = 1
 
-# the environment variables under this section tell buffanetes what environment variables need 
-# to be on the machine before it can deploy the application. you'll reference the environment
-# variables by the keys in this section, not the actual environment variable name.
-#
-# you can also run 'buffnet envs list' to see all the environment variables required
-#
-# All environment variables will be prefixed with "BUFFANETES_"
-[env]
-# don't remove this env var. it's used for a lot of things
-docker-repo = "DOCKER_REPO"
-google-cloud-sql-instances = "GOOGLE_CLOUD_SQL_INSTANCES"
-env = "ENV"
-host = "HOST"
+# this tells buffanetes the default docker repository to use. you can override this on the
+# command line though
+default-docker-repo = quay.io/tentsk8s/buffanetes
+
+# this tells buffanetes what to call this app! it defines
+app-name = "buffanetes"
