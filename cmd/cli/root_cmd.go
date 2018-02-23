@@ -13,6 +13,7 @@ func rootCmd() *cobra.Command {
 
 	cmd.AddCommand(envCmd())
 	cmd.AddCommand(deployRootCmd())
+	cmd.AddCommand(initCmd())
 
 	return cmd
 }
