@@ -1,38 +1,40 @@
 # Buffanetes
 
-Buffanetes is a [Kubernetes](https://kubernetes.io) deployment tool for 
+Buffanetes is a deployment tool that brings [Kubernetes](https://kubernetes.io) to your 
 [Buffalo](https://gobuffalo.io) web applications.
 
-Buffanetes assumes you have a standard Buffalo application set up. From there, it starts
-by generating the things you'll need to deploy your application to Kubernetes.
+Buffanetes aims to take all of the Kubernetes work off of your shoulders, so you can focus on
+building your app and let Buffanetes take care of everything else for you.
 
-From there, buffanetes it provides an easy to use command line interface (CLI) that you
-can use to deploy all the pieces of your application to a Kubernetes cluster - from
-the main webapp to grifts to database migrations.
+It lets you deploy your webapp or run your grifts and migrations all with a single CLI
+and a bit of TOML configuration.
 
-Buffanetes isn't a patchwork of Kubernetes utilities - it's a holistic tool that deploys
-your application to your Kubernetes cluster, without making you learn and write all the
-Kubernetes fundamentals (Kubernetes manifests, Helm charts, and so on...)
+# Requirements
+
+Aside from the Buffalo CLI and its dependencies (Go, Webpack, etc...), you'll need to have 
+[Docker](https://docker.com) installed on your machine and [Helm](https://helm.sh) installed
+on the Kubernetes cluster. Someone else can do the Helm part for you.
+
+# Assumptions
+
+Buffanetes assumes that you have a standard Buffalo application set up. From there, it will take
+care of packaging up your app, generating all the Kubernetes "stuff" that you need to deploy
+it, and then actually deploy it to your Kubernetes cluster.
 
 # Your Workflow
 
-Buffanetes doesn't change your development workflow. You still use the `buffalo` CLI to
-do all your local development. You'll use the Buffanetes CLI (called `buffnet`) when you're ready 
-to deploy your application to your Kubernetes cluster.
+First thing's first, Buffanetes doesn't change your development workflow. You still use the 
+`buffalo` CLI to do all your local development. You use the Buffanetes CLI (called `buffnet`) 
+when you're ready to deploy your code to your Kubernetes cluster.
 
 Let's look at a simple workflow, starting with no Buffalo app.
 
 ```console
-# first, create a new Buffalo app
-buffalo new myapp
-# let's go into the new app
-cd myapp
-# now set up the Buffanetes config files
-buffnet init
-# let's build some stuff into our web app. rinse and repeat
-buffalo dev
-# now we're ready to deploy our app to Kubernetes
-buffnet deploy web
+$ buffalo new myapp # first, create a new Buffalo app with sensible defaults
+$ cd myapp # let's go into the new app
+$ buffnet init # now set up the Buffanetes config files
+$ buffalo dev # do your normal edit-test workflow
+$ buffnet deploy web # time to deploy your webapp!
 ```
 
 Now you're cooking! You created a Buffalo app, built it, and deployed it to Kubernetes.
@@ -41,6 +43,6 @@ Enjoy!
 
 # Documentation
 
-The samples above work for many folks, but you can do more with Buffanetes.
+The simple workflow above works for many folks, but Buffanetes unlocks more for you.
 
 Please visit the [documentation](./docs) for complete docs, examples and more.
